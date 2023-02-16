@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,15 +20,19 @@ class OrderType extends AbstractType
     {
         $builder
             ->add('taxnumber',TextType::class)
-            ->add('productid',EntityType::class, array(
+            ->add('productidstr',EntityType::class, array(
                 'label' => 'Продукт',
                 'class' => Products::class,
                 'choice_label' => 'Name',
                 'choice_value'=>'id',
                 'attr'=>['class'=>'w-50 ml-auto mr-auto custom-select d-block']
             ))
-            ->add('productprice')
-            ->add('fullprice')
+            ->add('productprice',IntegerType::class,array(
+                'attr'=>['readonly'=>'']
+            ))
+            ->add('fullprice',IntegerType::class,array(
+                'attr'=>['readonly'=>'']
+            ))
             ->add('save', SubmitType::class,array(
                 'label'=>'Заказать',
                 'attr'=>['class'=>'ml-auto mr-auto btn btn-outline-success d-block']

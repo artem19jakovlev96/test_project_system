@@ -22,8 +22,21 @@ class Orders
     #[ORM\Column(type: 'integer')]
     private $productprice;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'float')]
     private $fullprice;
+    private $productidstr;
+
+
+    public function getProductidstr()
+    {
+        return $this->productidstr;
+    }
+
+    public function setProductidstr($productidstr): self
+    {
+        $this->productidstr = $productidstr;
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -66,12 +79,12 @@ class Orders
         return $this;
     }
 
-    public function getFullprice(): ?int
+    public function getFullprice(): ?float
     {
         return $this->fullprice;
     }
 
-    public function setFullprice(int $fullprice): self
+    public function setFullprice(float $fullprice): self
     {
         $this->fullprice = $fullprice;
 

@@ -1,10 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html.twig' %}
+{% block title %} {{ title }} {% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-12">
+                <h1 class="text-center mt-1">
+                    {{ title }}
+                </h1>
+            </div>
+            <div class="col-12 mt-2">
+                <div class="col-3 ml-auto mr-auto text-center">
+                    {{ form_start(Order) }}
+                    <div class="mb-2">
+                        <div class="w-100">
+                            Tax-номер
+                        </div>
+                        {{ form_widget(Order.taxnumber) }}
+                    </div>
+                    <div class="mb-2">
+                        <div class="w-100">
+                            Продукт
+                        </div>
+                        {{ form_widget(Order.productidstr) }}
+                    </div>
+                    <div class="mb-2">
+                        <div class="w-100">
+                            Цена
+                        </div>
+                        {{ form_widget(Order.productprice) }}
+                    </div>
+                    <div class="mb-2">
+                        <div class="w-100">
+                            Цена с налогом
+                        </div>
+                        {{ form_widget(Order.fullprice) }}
+{#                        <input type="number" id="order_fullprice" name="order[fullprice]" required="required">#}
+                        {#                        {{ form_widget(Order.productprice) }}#}
+                    </div>
+{#                    <input type="number" id="order_productprice" class="d-none" name="order[productprice]" required="required">#}
+{#                    <input type="number" id="order_fullprice" name="order[fullprice]" required="required">#}
+                    <div class="form-group mt-2">
+                        {{ form_widget(Order.save) }}
+                    </div>
+                    {{ form_end(Order) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
